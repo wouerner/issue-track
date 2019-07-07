@@ -1,0 +1,4 @@
+export const LOGIN_USUARIO = 'LOGIN_USUARIO';
+export const LOGOUT_USUARIO = 'LOGOUT_USUARIO';
+export const SET_ISSUES = 'SET_ISSUES';
+export const INSERT_ISSUE = 'INSERT_ISSUE';

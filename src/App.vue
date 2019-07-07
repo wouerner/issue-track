@@ -1,31 +1,42 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-toolbar app v-if="this.$route.path != '/'">
+      <v-toolbar-title class="headline text-uppercase">
+        <span>Issue</span>
+        <span class="font-weight-light">Track</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      {{userGetter.login}}<br>
+      {{userGetter.repos}}
+      <v-btn color="red" dark @click="logoutAction()">Exit</v-btn>
+    </v-toolbar>
+    <v-content>
+        <router-view/>
+    </v-content>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+import { mapActions, mapGetters } from 'vuex';
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+export default {
+    name: 'App',
+    data () {
+        return {
+        }
+    },
+    computed:{
+        ...mapGetters({
+            userGetter: 'github/userGetter',
+        }),
+    },
+    mounted(){
+    },
+    methods: {
+        ...mapActions({
+            logoutAction: 'github/logoutAction',
+        }),
+    }
 }
-</style>
+</script>
