@@ -17,7 +17,6 @@ Acessar http://localhost:8080
 
 Preencher o login, senha e repositorio que gostaria de criar as issues.
 
-O metodo de auntenticação é o Basic Http, pois pois o metodo pelo o oauth até onde pesquisei não seria possivel, pelo configuração dos servidores do github.
+O metodo de auntenticação é o Basic Http, pois o metodo pelo o oauth até onde pesquisei não seria possível, pela configuração dos servidores do github.  
 
-
-Gostaria de agradecer pelo teste, foi muito interessante verificar como github trabalha com sua API.
+Gostaria de agradecer pelo teste, foi muito interessante verificar como github trabalha com sua API.  
