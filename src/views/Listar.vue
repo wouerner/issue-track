@@ -25,16 +25,16 @@
                                 ></v-text-field>
                         </v-flex>
                     </v-container>
-
                 </v-card>
             </v-dialog>
-
         <v-layout column wrap>
             <v-data-table
                 :headers="headers"
                 :items="issuesGetter"
                 class="elevation-1"
+                :loading="loadingTable"
             >
+                <v-progress-linear v-slot:progress color="blue" indeterminate></v-progress-linear>
                 <template v-slot:items="props">
                     <td>{{ props.item.title }}</td>
                     <td class="text-xs-right">
@@ -65,6 +65,7 @@ export default {
     name: 'Listar',
     data() {
         return {
+            loadingTable: true,
             title: '',
             number: '',
             dialog: false,
@@ -127,6 +128,11 @@ export default {
             this.title = item.title
             this.number = item.number
             this.formType = 'update'
+        }
+    },
+    watch:{
+        issuesGetter(val) {
+            this.loadingTable = Object.keys(val).length > 0 ? false : true
         }
     }
 }

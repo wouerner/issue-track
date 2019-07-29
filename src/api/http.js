@@ -1,17 +1,23 @@
 import axios from 'axios';
 
-axios.interceptors.request.use((config) => {
-    const conf = config;
-
-    conf.headers.Authorization = `Basic ${localStorage.getItem('token')}`;
-
-    return conf;
-}, err => Promise.reject(err));
+axios.interceptors.request.use(function (config) {
+    return {
+        config,
+        ...{
+            'Authorization': `Basic ${localStorage.getItem('token')}`
+        }
+    }
+}, function (error) {
+    return Promise.reject(error);
+});
 
 let instance = {};
 instance = axios.create({
     baseURL: 'https://api.github.com',
     crossdomain: true,
+    headers:{
+        'Authorization': `Basic ${localStorage.getItem('token')}`
+    }
 });
 
 export const getRequest = function (path) {

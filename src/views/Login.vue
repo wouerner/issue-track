@@ -25,6 +25,7 @@
                         placeholder="Placeholder"
                         outline
                         v-model="password"
+                        type="password"
                         ></v-text-field>
                 </v-flex>
                 <v-flex xs6 sm6 md3>
@@ -54,7 +55,7 @@ export default {
       return {
         login:'',
         password:'',
-        repos:'wouerner/job-vacancies',
+        repos:'wouerner-dev/issuetrack-test',
       }
   },
   methods: {
