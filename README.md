@@ -1,39 +1,22 @@
-# citatech
+# IssueTrack
 
-## Project setup
-```
-yarn install
-```
+## Pré-requisitos
+* docker
+* docker-compose
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
+## Instalação
+``` sh
+git clone https://github.com/wouerner/citatech-jobs.git
+cd citatech-jobs
+docker-compose up
 ```
 
-### Run your tests
-```
-yarn run test
-```
+Pode levar algum tempo pois vai instalar todos os componentes do projeto.
 
-### Lints and fixes files
-```
-yarn run lint
-```
+Acessar http://localhost:8080
 
-### Run your end-to-end tests
-```
-yarn run test:e2e
-```
+Preencher o login, senha e repositorio que gostaria de criar as issues.
 
-### Run your unit tests
-```
-yarn run test:unit
-```
+O metodo de auntenticação é o Basic Http, pois o metodo pelo o oauth até onde pesquisei não seria possível, pela configuração dos servidores do github.  
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Gostaria de agradecer pelo teste, foi muito interessante verificar como github trabalha com sua API.  
