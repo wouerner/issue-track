@@ -27,39 +27,40 @@
                     </v-container>
                 </v-card>
             </v-dialog>
-        <v-layout column wrap>
-            <v-data-table
-                :headers="headers"
-                :items="issuesGetter"
-                class="elevation-1"
-                :loading="loadingTable"
-            >
-                <v-progress-linear v-slot:progress color="blue" indeterminate></v-progress-linear>
-                <template v-slot:items="props">
-                    <td>{{ props.item.title }}</td>
-                    <td class="text-xs-right">
-                        <v-btn
-                            v-if="props.item.locked == false"
-                            color="danger" dark 
-                            @click="lock(props.item)">Lock
-                            <v-icon dark right>lock</v-icon> 
-                        </v-btn>
-                        <v-btn
-                            v-if="props.item.locked == true"
-                            color="danger" dark @click="unlock(props.item)">Unlock
-                            <v-icon dark right>lock_open</v-icon> 
-                        </v-btn>
-                        <v-btn color="blue" dark @click="updateDialog(props.item)">edit</v-btn>
-                    </td>
-                </template>
-            </v-data-table>
-        </v-layout>
+            <v-layout column wrap>
+                <v-data-table
+                    :headers="headers"
+                    :items="issuesGetter"
+                    class="elevation-1"
+                    :loading="loadingTable"
+                >
+                    <v-progress-linear v-slot:progress color="blue" indeterminate></v-progress-linear>
+                    <template v-slot:items="props">
+                        <td>{{ props.item.number | pad }}</td>
+                        <td>{{ props.item.title }}</td>
+                        <td class="text-xs-right">
+                            <v-btn
+                                v-if="props.item.locked == false"
+                                color="danger" dark
+                                @click="lock(props.item)">Lock
+                                <v-icon dark right>lock</v-icon>
+                            </v-btn>
+                            <v-btn
+                                v-if="props.item.locked == true"
+                                color="danger" dark @click="unlock(props.item)">Unlock
+                                <v-icon dark right>lock_open</v-icon>
+                            </v-btn>
+                            <v-btn color="blue" dark @click="updateDialog(props.item)">edit</v-btn>
+                        </td>
+                    </template>
+                </v-data-table>
+            </v-layout>
         </v-container>
     </div>
 </template>
-
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import pad from '@/filters/Padding';
 
 export default {
     name: 'Listar',
@@ -71,6 +72,12 @@ export default {
             dialog: false,
             formType: 'create',
             headers:[
+                {
+                    text: 'number',
+                    align: 'left',
+                    sortable: false,
+                    value: 'number'
+                },
                 {
                     text: 'Title',
                     align: 'left',
@@ -85,6 +92,9 @@ export default {
                 },
             ]
         }
+    },
+    filters: {
+        pad
     },
     computed: {
         ...mapGetters({
