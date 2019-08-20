@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/issue-track/precache-manifest.3acfac2dfeda3586351fe39214fa383a.js"
+  "/issue-track/precache-manifest.c75979da6e4014e30568fcae0d1b08c4.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "citatech"});
